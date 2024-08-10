@@ -44,7 +44,9 @@ public class Player : MonoBehaviour
                 grounded = Physics.Raycast(transform.position, Vector2.up, .5f);
                 break;
             case GravityDir.down:
-                grounded = Physics.Raycast(transform.position, Vector2.down, .5f);
+                Debug.Log(grounded);
+                grounded = Physics.Raycast(transform.position, Vector2.down * 5, .5f);
+                Debug.DrawRay(transform.position, Vector2.down, Color.red);
                 break;
         }
 
@@ -63,7 +65,6 @@ public class Player : MonoBehaviour
             jumpLeft = true;
         if (grounded && Input.GetKeyDown(KeyCode.E))
             jumpRight = true;
-        // make grounded work puppy
     }
 
     private void FixedUpdate()
