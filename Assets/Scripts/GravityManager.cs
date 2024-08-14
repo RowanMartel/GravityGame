@@ -32,7 +32,7 @@ public class GravityManager : MonoBehaviour
     {
         switch (gravityDir)
         {
-            case GravityDir.up: gravityDir = left; Physics2D.gravity = gravVectorLeft; break;
+            case GravityDir.up: gravityDir = right; Physics2D.gravity = gravVectorRight; break;
             case GravityDir.down: gravityDir = left; Physics2D.gravity = gravVectorLeft; break;
             case GravityDir.left: gravityDir = up; Physics2D.gravity = gravVectorUp; break;
             case GravityDir.right: gravityDir = down; Physics2D.gravity = gravVectorDown; break;
@@ -44,7 +44,7 @@ public class GravityManager : MonoBehaviour
     {
         switch (gravityDir)
         {
-            case GravityDir.up: gravityDir = right; Physics2D.gravity = gravVectorRight; break;
+            case GravityDir.up: gravityDir = left; Physics2D.gravity = gravVectorLeft; break;
             case GravityDir.down: gravityDir = right; Physics2D.gravity = gravVectorRight; break;
             case GravityDir.left: gravityDir = down; Physics2D.gravity = gravVectorDown; break;
             case GravityDir.right: gravityDir = up; Physics2D.gravity = gravVectorUp; break;

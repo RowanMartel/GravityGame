@@ -145,16 +145,17 @@ public class CharacterController2D : MonoBehaviour
 		{
 			// Add a vertical force to the player.
 			m_Grounded = false;
-			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 
-			if (jumpDir == PlayerMovement.JumpDir.left)
-			{
-				gravityManager.ShiftGravLeft();
-				transform.Rotate(Vector3.forward, -90);
-			}
-			else if (jumpDir == PlayerMovement.JumpDir.right)
-			{
-				gravityManager.ShiftGravRight();
+            m_Rigidbody2D.AddForce(transform.up * m_JumpForce);
+
+            if (jumpDir == PlayerMovement.JumpDir.left)
+            {
+                gravityManager.ShiftGravLeft();
+                transform.Rotate(Vector3.forward, -90);
+            }
+            else if (jumpDir == PlayerMovement.JumpDir.right)
+            {
+                gravityManager.ShiftGravRight();
                 transform.Rotate(Vector3.forward, 90);
             }
 		}
