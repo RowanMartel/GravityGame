@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public static int furthestLevel;
+    public static int currentLevel;
 
     private void Awake()
     {
@@ -13,6 +14,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        if (furthestLevel !> 1) furthestLevel = 1;
+        if (furthestLevel < 2) furthestLevel = 1;
     }
 }

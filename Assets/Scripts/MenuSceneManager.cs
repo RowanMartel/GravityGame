@@ -45,11 +45,13 @@ public class MenuSceneManager : MonoBehaviour
 
     public void StartContGame()
     {
+        GameManager.currentLevel = GameManager.furthestLevel;
         SceneManager.LoadScene(GameManager.furthestLevel);
     }
 
     public void LoadSelectedLevel(int selection)
     {
+        GameManager.currentLevel = selection;
         SceneManager.LoadScene(selection);
     }
 }
