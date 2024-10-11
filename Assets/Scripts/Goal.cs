@@ -31,6 +31,7 @@ public class Goal : MonoBehaviour
         if (!collision.gameObject.CompareTag("Player")) return;
 
         GameManager.currentLevel++;
+        GameManager.furthestLevel = GameManager.currentLevel;
         SceneManager.LoadScene(GameManager.currentLevel);
     }
 }

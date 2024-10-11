@@ -26,6 +26,7 @@ public class GravityManager : MonoBehaviour
     {
         instance = this;
         gravityDir = down;
+        Physics2D.gravity = gravVectorDown;
     }
 
     public void ShiftGravLeft()

@@ -2,14 +2,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
 
     public static int furthestLevel;
     public static int currentLevel;
 
     private void Awake()
     {
-        instance = this;
+        if (Instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Start()
