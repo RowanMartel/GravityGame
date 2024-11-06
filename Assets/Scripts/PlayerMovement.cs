@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMove = 0;
     bool jump = false;
 
+    public bool isCrushed = false;
+
     public enum JumpDir
     {
         left, right
@@ -94,6 +96,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // player cannot move while crushed
+        if (isCrushed)
+            horizontalMove = 0;
+
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump, jumpDir);
         jump = false;
     }

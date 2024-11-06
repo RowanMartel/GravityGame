@@ -38,8 +38,6 @@ public class GravityManager : MonoBehaviour
             case GravityDir.left: gravityDir = up; Physics2D.gravity = gravVectorUp; break;
             case GravityDir.right: gravityDir = down; Physics2D.gravity = gravVectorDown; break;
         }
-
-        Debug.Log(Physics2D.gravity);
     }
     public void ShiftGravRight()
     {
@@ -50,7 +48,5 @@ public class GravityManager : MonoBehaviour
             case GravityDir.left: gravityDir = down; Physics2D.gravity = gravVectorDown; break;
             case GravityDir.right: gravityDir = up; Physics2D.gravity = gravVectorUp; break;
         }
-
-        Debug.Log(Physics2D.gravity);
     }
 }
