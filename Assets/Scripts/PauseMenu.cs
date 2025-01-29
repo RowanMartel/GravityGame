@@ -8,6 +8,13 @@ public class PauseMenu : MonoBehaviour
     bool paused;
     [SerializeField] GameObject pauseUI;
 
+    public static PauseMenu Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         Resume();
@@ -41,5 +48,10 @@ public class PauseMenu : MonoBehaviour
     public void GoToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

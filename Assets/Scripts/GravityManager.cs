@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GravityManager : MonoBehaviour
 {
-    public static GravityManager instance;
+    public static GravityManager Instance;
 
     public enum GravityDir
     {
@@ -17,36 +17,49 @@ public class GravityManager : MonoBehaviour
 
     public GravityDir gravityDir;
 
-    Vector2 gravVectorUp = new Vector2(0, 9.81f);
-    Vector2 gravVectorDown = new Vector2(0, -9.81f);
-    Vector2 gravVectorRight = new Vector2(9.81f, 0);
-    Vector2 gravVectorLeft = new Vector2(-9.81f, 0);
+    Vector2 gravVectorUp = new Vector2(0, 2 * 9.81f);
+    Vector2 gravVectorDown = new Vector2(0, 2 * -9.81f);
+    Vector2 gravVectorRight = new Vector2(2 * 9.81f, 0);
+    Vector2 gravVectorLeft = new Vector2(2 * -9.81f, 0);
 
     private void Awake()
     {
-        instance = this;
-        gravityDir = down;
-        Physics2D.gravity = gravVectorDown;
-    }
+        Instance = this;
 
-    public void ShiftGravLeft()
-    {
         switch (gravityDir)
         {
-            case GravityDir.up: gravityDir = right; Physics2D.gravity = gravVectorRight; break;
-            case GravityDir.down: gravityDir = left; Physics2D.gravity = gravVectorLeft; break;
-            case GravityDir.left: gravityDir = up; Physics2D.gravity = gravVectorUp; break;
-            case GravityDir.right: gravityDir = down; Physics2D.gravity = gravVectorDown; break;
+            case GravityDir.up:
+                Physics2D.gravity = gravVectorUp;
+                break;
+            case GravityDir.down:
+                Physics2D.gravity = gravVectorDown;
+                break;
+            case GravityDir.left:
+                Physics2D.gravity = gravVectorLeft;
+                break;
+            case GravityDir.right:
+                Physics2D.gravity = gravVectorRight;
+                break;
         }
     }
-    public void ShiftGravRight()
+
+    public void ChangeGrav(GravityDir gravityDir)
     {
+        this.gravityDir = gravityDir;
         switch (gravityDir)
         {
-            case GravityDir.up: gravityDir = left; Physics2D.gravity = gravVectorLeft; break;
-            case GravityDir.down: gravityDir = right; Physics2D.gravity = gravVectorRight; break;
-            case GravityDir.left: gravityDir = down; Physics2D.gravity = gravVectorDown; break;
-            case GravityDir.right: gravityDir = up; Physics2D.gravity = gravVectorUp; break;
+            case GravityDir.up:
+                Physics2D.gravity = gravVectorUp;
+                break;
+            case GravityDir.down:
+                Physics2D.gravity = gravVectorDown;
+                break;
+            case GravityDir.left:
+                Physics2D.gravity = gravVectorLeft;
+                break;
+            case GravityDir.right:
+                Physics2D.gravity = gravVectorRight;
+                break;
         }
     }
 }

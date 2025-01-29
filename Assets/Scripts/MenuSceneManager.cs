@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,12 +8,11 @@ public class MenuSceneManager : MonoBehaviour
 {
     [SerializeField] Button btnLevelSelect;
     [SerializeField] TMP_Text txtStartCont;
-    [SerializeField] GameObject imgLevel3Lock;
-    [SerializeField] GameObject imgLevel4Lock;
-    [SerializeField] GameObject imgLevel5Lock;
 
     [SerializeField] GameObject layoutMainMenu;
     [SerializeField] GameObject layoutLevelSelect;
+
+    [SerializeField] List<GameObject> levelPages = new();
 
     void Start()
     {
@@ -20,15 +20,6 @@ public class MenuSceneManager : MonoBehaviour
         {
             btnLevelSelect.interactable = true;
             txtStartCont.text = "Continue Game";
-
-            if (GameManager.furthestLevel > 2)
-            {
-                imgLevel3Lock.SetActive(false);
-                if (GameManager.furthestLevel > 3)
-                    imgLevel4Lock.SetActive(false);
-                    if (GameManager .furthestLevel > 4)
-                        imgLevel5Lock.SetActive(false);
-            }
         }
     }
 
@@ -53,5 +44,14 @@ public class MenuSceneManager : MonoBehaviour
     {
         GameManager.currentLevel = selection;
         SceneManager.LoadScene(selection);
+    }
+
+    public void ChangeLevelPage(GameObject page)
+    {
+        foreach (GameObject go in levelPages)
+        {
+            go.SetActive(false);
+        }
+        page.SetActive(true);
     }
 }
