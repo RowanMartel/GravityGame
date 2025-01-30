@@ -2,3 +2,4 @@ Menu button hex value: 2F2F2F
 Gravity-affected platform hex value: FF7800
 Pause menu panel hex value: D1D1D1
 Goal hex value: CCFFDF
+Platform connector hex value: 4A3A2C
